@@ -48,25 +48,25 @@ class MainActivity : AppCompatActivity() {
                     val splitValue = tvValue.split("-")
                     var first_num = prefix+splitValue[0]
                     var second_num = splitValue[1]
-                    tvInput?.text = (first_num.toDouble() - second_num.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((first_num.toDouble() - second_num.toDouble()).toString())
                 }
                 else if (tvValue.contains("+")){
                     val splitValue = tvValue.split("+")
                     var first_num = prefix+splitValue[0]
                     var second_num = splitValue[1]
-                    tvInput?.text = (first_num.toDouble() + second_num.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((first_num.toDouble() + second_num.toDouble()).toString())
                 }
                 else if (tvValue.contains("*")){
                     val splitValue = tvValue.split("*")
                     var first_num = prefix+splitValue[0]
                     var second_num = splitValue[1]
-                    tvInput?.text = (first_num.toDouble() * second_num.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((first_num.toDouble() * second_num.toDouble()).toString())
                 }
                 else if (tvValue.contains("/")){
                     val splitValue = tvValue.split("/")
                     var first_num = prefix+splitValue[0]
                     var second_num = splitValue[1]
-                    tvInput?.text = (first_num.toDouble() / second_num.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((first_num.toDouble() / second_num.toDouble()).toString())
                 }
                 else{
 
@@ -87,6 +87,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun removeZeroAfterDot(result: String): String{
+        var value = result
+        if(result.endsWith(".0")){
+            value = value.substring(0,value.length -2)
+        }
+        return value
     }
     private fun isOperatorAdded(value: String): Boolean{
         return if(value.startsWith("-")){
