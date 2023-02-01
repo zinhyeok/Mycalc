@@ -44,10 +44,34 @@ class MainActivity : AppCompatActivity() {
                     prefix ="-"
                     tvValue = tvValue.substring(1)
                 }
-                val splitValue = tvValue.split("-")
-                var first_num = prefix+splitValue[0]
-                var second_num = splitValue[1]
-                tvInput?.text = (first_num.toDouble() - second_num.toDouble()).toString()
+                if (tvValue.contains("-")){
+                    val splitValue = tvValue.split("-")
+                    var first_num = prefix+splitValue[0]
+                    var second_num = splitValue[1]
+                    tvInput?.text = (first_num.toDouble() - second_num.toDouble()).toString()
+                }
+                else if (tvValue.contains("+")){
+                    val splitValue = tvValue.split("+")
+                    var first_num = prefix+splitValue[0]
+                    var second_num = splitValue[1]
+                    tvInput?.text = (first_num.toDouble() + second_num.toDouble()).toString()
+                }
+                else if (tvValue.contains("*")){
+                    val splitValue = tvValue.split("*")
+                    var first_num = prefix+splitValue[0]
+                    var second_num = splitValue[1]
+                    tvInput?.text = (first_num.toDouble() * second_num.toDouble()).toString()
+                }
+                else if (tvValue.contains("/")){
+                    val splitValue = tvValue.split("/")
+                    var first_num = prefix+splitValue[0]
+                    var second_num = splitValue[1]
+                    tvInput?.text = (first_num.toDouble() / second_num.toDouble()).toString()
+                }
+                else{
+
+                }
+
 
             }catch (e: ArithmeticException){
                 e.printStackTrace()
