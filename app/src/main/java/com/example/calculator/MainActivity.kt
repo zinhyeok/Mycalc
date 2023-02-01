@@ -35,7 +35,25 @@ class MainActivity : AppCompatActivity() {
             lastDot = true
         }
     }
+    fun onEqual(view: View){
+        if(lastNumeric){
+            var tvValue = tvInput?.text.toString()
+            var prefix = ""
+            try {
+                if(tvValue.startsWith("-")){
+                    prefix ="-"
+                    tvValue = tvValue.substring(1)
+                }
+                val splitValue = tvValue.split("-")
+                var first_num = prefix+splitValue[0]
+                var second_num = splitValue[1]
+                tvInput?.text = (first_num.toDouble() - second_num.toDouble()).toString()
 
+            }catch (e: ArithmeticException){
+                e.printStackTrace()
+            }
+        }
+    }
     fun onOperator(view: View){
         tvInput?.text?.let{
             if(lastNumeric && !isOperatorAdded(it.toString())){
